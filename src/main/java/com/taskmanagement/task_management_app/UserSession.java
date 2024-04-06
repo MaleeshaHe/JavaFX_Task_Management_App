@@ -11,6 +11,7 @@ public final class UserSession {
     private Set<String> privileges;
     private static String depId;
 
+
     private UserSession(String userName, String userTgNum,Set<String> privileges,String depId) {
         this.userName = userName;
         this.userTgNum = userTgNum;
