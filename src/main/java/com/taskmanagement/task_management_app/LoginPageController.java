@@ -66,6 +66,18 @@ public class LoginPageController implements Initializable {
     @FXML
     void logInbtn(ActionEvent event) throws IOException {
 
+        Set<String> privileges = new HashSet<>();
+                            privileges.add("adminPrivilege");
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("admin/admin-home.fxml"));
+                            root = loader.load();
+                            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                            scene = new Scene(root, 1080,610);
+                            stage.setScene(scene);
+                            stage.centerOnScreen();
+                            stage.show();
+                            stage.resizableProperty().setValue(false);
+                            new FadeIn(root).play();
+
 //        if(user_name.getText().length() == 0){
 //            user_name.setStyle("-fx-background-color: rgba(255,0,0,0.30)");
 //            new Shake(user_name).play();
