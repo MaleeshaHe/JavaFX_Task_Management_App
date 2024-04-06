@@ -40,8 +40,6 @@ import java.util.logging.Logger;
 public class UserController implements Initializable {
 
     @FXML
-    private JFXComboBox<String> comboUserRole;
-    @FXML
     private BorderPane borderpane;
     @FXML
     private TableColumn<UserDetails, String> departmentcol;
@@ -71,7 +69,6 @@ public class UserController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        comboUserRole.setItems(FXCollections.observableArrayList("Student","Lecturer","Admin","Technical Officer"));
         loadData();
     }
 
@@ -87,12 +84,12 @@ public class UserController implements Initializable {
         connection = DbConnect.getConnect();
         refreshTable();
 
-        idcol.setCellValueFactory(new PropertyValueFactory<>("tgnum"));
+        idcol.setCellValueFactory(new PropertyValueFactory<>("user_id"));
         fnamecol.setCellValueFactory(new PropertyValueFactory<>("fname"));
         lnamecol.setCellValueFactory(new PropertyValueFactory<>("lname"));
         phonecol.setCellValueFactory(new PropertyValueFactory<>("phone_num"));
         emailcol.setCellValueFactory(new PropertyValueFactory<>("email"));
-        departmentcol.setCellValueFactory(new PropertyValueFactory<>("user_roll"));
+        departmentcol.setCellValueFactory(new PropertyValueFactory<>("password"));
 
         Callback<TableColumn<UserDetails, String>, TableCell<UserDetails, String>> cellFoctory = (TableColumn<UserDetails, String> param) -> {
             final TableCell<UserDetails, String> cell = new TableCell<UserDetails, String>() {
@@ -112,7 +109,7 @@ public class UserController implements Initializable {
                         Circle propic = new Circle(25);
                         try {
                             connection = DbConnect.getConnect();
-                            query = "SELECT profile_pic FROM user WHERE tgnum='"+tg+"'";
+                            query = "SELECT profile_pic FROM public.users WHERE user_id='"+tg+"'";
                             preparedStatement = connection.prepareStatement(query);
                             resultSet = preparedStatement.executeQuery();
 
@@ -185,14 +182,14 @@ public class UserController implements Initializable {
         try {
             userList.clear();
 
-            query = "SELECT * FROM user,department WHERE user.depId=department.depId";
+            query = "SELECT * FROM public.users";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
 
             while (resultSet.next()){
                 userList.add(new UserDetails(
-                        resultSet.getString("tgnum"),
+                        resultSet.getString("user_id"),
                         resultSet.getString("fname"),
                         resultSet.getString("lname"),
                         resultSet.getString("phone_num"),
@@ -231,7 +228,7 @@ public class UserController implements Initializable {
             if(result.get() == ButtonType.OK){
                 try {
                     userDetails = userTable.getSelectionModel().getSelectedItem();
-                    query = "DELETE FROM `user` WHERE tgnum='"+userDetails.getUser_id()+"'";
+                    query = "DELETE FROM public.users WHERE user_id='"+userDetails.getUser_id()+"'";
                     connection = DbConnect.getConnect();
                     preparedStatement = connection.prepareStatement(query);
                     preparedStatement.execute();
@@ -274,139 +271,6 @@ public class UserController implements Initializable {
             alert.setContentText("If you want to update any user, First you select the row that you want to update");
             alert.showAndWait();
         }
-    }
-
-    public void comboSelectUser(){
-        loadDataCombo();
-    }
-
-
-    public void loadDataCombo() {
-        connection = DbConnect.getConnect();
-        refreshTableCombo();
-
-        idcol.setCellValueFactory(new PropertyValueFactory<>("tgnum"));
-        fnamecol.setCellValueFactory(new PropertyValueFactory<>("fname"));
-        lnamecol.setCellValueFactory(new PropertyValueFactory<>("lname"));
-        phonecol.setCellValueFactory(new PropertyValueFactory<>("phone_num"));
-        emailcol.setCellValueFactory(new PropertyValueFactory<>("email"));
-        departmentcol.setCellValueFactory(new PropertyValueFactory<>("user_roll"));
-
-        Callback<TableColumn<UserDetails, String>, TableCell<UserDetails, String>> cellFoctory = (TableColumn<UserDetails, String> param) -> {
-            final TableCell<UserDetails, String> cell = new TableCell<UserDetails, String>() {
-                @Override
-                public void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty);
-
-                    if (empty) {
-                        setGraphic(null);
-                        setText(null);
-
-                    } else {
-
-                        UserDetails userDetails = getTableView().getItems().get(getIndex());
-                        String tg = userDetails.getUser_id(); // get tgnum value from UserDetails object
-
-                        Circle propic = new Circle(25);
-                        try {
-                            connection = DbConnect.getConnect();
-                            query = "SELECT profile_pic FROM user WHERE tgnum='"+tg+"'";
-                            preparedStatement = connection.prepareStatement(query);
-                            resultSet = preparedStatement.executeQuery();
-
-                            while (resultSet.next()){
-
-                                InputStream is = resultSet.getBinaryStream("profile_pic");
-                                OutputStream os = new FileOutputStream(new File("photo.jpg"));
-                                byte[] content = new byte[1024];
-                                int size = 0;
-                                while ((size = is.read(content)) != -1){
-                                    os.write(content,0,size);
-                                }
-                                os.close();
-                                is.close();
-
-                                propic.setFill(new ImagePattern(new Image("file:photo.jpg",0,0,true,true)));
-                            }
-
-                        }catch (Exception e){
-                            System.out.println(e);
-                        }
-
-                        HBox managebtn = new HBox(propic);
-                        managebtn.setStyle("-fx-alignment:center");
-                        HBox.setMargin(propic, new Insets(5, 2, 5, 2));
-                        setGraphic(managebtn);
-                        setText(null);
-                    }
-                }
-            };
-
-            return cell;
-        };
-        photocol.setCellFactory(cellFoctory);
-        userTable.setItems(userList);
-        new FadeIn(userTable).play();
-
-        FilteredList<UserDetails> filteredData = new FilteredList<>(userList,b -> true);
-        txtKeyword.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(UserDetails -> {
-
-                if(newValue.isEmpty() || newValue.isBlank() || newValue == null){
-                    return true;
-                }
-
-                String searchKeyword = newValue.toLowerCase();
-
-                if (UserDetails.getFname().toLowerCase().indexOf(searchKeyword) > -1){
-                    return true;
-                } else if (UserDetails.getLname().toLowerCase().indexOf(searchKeyword) > -1 ) {
-                    return true;
-                } else if (UserDetails.getUser_id().toLowerCase().indexOf(searchKeyword) > -1 ) {
-                    return true;
-                } else {
-                    return false;
-                }
-
-            });
-        });
-
-        SortedList<UserDetails> sortedData = new SortedList<>(filteredData);
-        sortedData.comparatorProperty().bind(userTable.comparatorProperty());
-        userTable.setItems(sortedData);
-        new FadeIn(userTable).play();
-
-    }
-
-    @FXML
-    private void refreshTableCombo() {
-        try {
-            userList.clear();
-
-            query = "SELECT * FROM user,department WHERE user.depId=department.depId AND user_roll='"+comboUserRole.getValue()+"'";
-            preparedStatement = connection.prepareStatement(query);
-            resultSet = preparedStatement.executeQuery();
-
-
-            while (resultSet.next()){
-                userList.add(new UserDetails(
-                        resultSet.getString("tgnum"),
-                        resultSet.getString("fname"),
-                        resultSet.getString("lname"),
-                        resultSet.getString("phone_num"),
-                        resultSet.getString("email"),
-                        resultSet.getString("dob"),
-                        resultSet.getString("sex"),
-                        resultSet.getString("address"),
-                        resultSet.getString("password"),
-                        resultSet.getString("user_roll")));
-                userTable.setItems(userList);
-            }
-
-        } catch (SQLException ex) {
-//            Logger.getLogger(NoticeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
     }
 
     @FXML

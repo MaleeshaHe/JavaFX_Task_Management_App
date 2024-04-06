@@ -8,16 +8,16 @@ import java.util.logging.Logger;
 
 public class DbConnect {
     private static String HOST = "localhost";
-    private static int PORT = 3306;
-    private static String DB_NAME = "tecmis";
-    private static String USERNAME = "root";
-    private static String PASSWORD = "";
+    private static int PORT = 5432;
+    private static String DB_NAME = "taskmaster_db";
+    private static String USERNAME = "postgres";
+    private static String PASSWORD = "1234";
     private static Connection connection ;
 
 
     public static Connection getConnect (){
         try {
-            connection = DriverManager.getConnection(String.format("jdbc:mysql://%s:%d/%s", HOST,PORT,DB_NAME),USERNAME,PASSWORD);
+            connection = DriverManager.getConnection(String.format("jdbc:postgresql://%s:%d/%s", HOST,PORT,DB_NAME),USERNAME,PASSWORD);
         } catch (SQLException ex) {
             Logger.getLogger(DbConnect.class.getName()).log(Level.SEVERE, null, ex);
         }
