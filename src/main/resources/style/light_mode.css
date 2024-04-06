@@ -3,7 +3,7 @@
 }
 
 .success{
-    -fx-background-color: #eaeaea;
+    -fx-background-color: #F6F6E9;
 }
 
 .btn-primary{
@@ -13,7 +13,7 @@
 }
 
 .btn-success{
-    -fx-background-color: #5271FF;
+    -fx-background-color: #ED5B2D;
     -fx-text-fill: #ffff;
 }
 

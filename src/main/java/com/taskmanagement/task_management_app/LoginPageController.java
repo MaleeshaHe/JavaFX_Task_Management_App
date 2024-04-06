@@ -63,9 +63,9 @@ public class LoginPageController implements Initializable {
 
     }
 
-//    @FXML
-//    void logInbtn(ActionEvent event) throws IOException {
-//
+    @FXML
+    void logInbtn(ActionEvent event) throws IOException {
+
 //        if(user_name.getText().length() == 0){
 //            user_name.setStyle("-fx-background-color: rgba(255,0,0,0.30)");
 //            new Shake(user_name).play();
@@ -178,8 +178,8 @@ public class LoginPageController implements Initializable {
 //            }catch (Exception e){
 //                System.out.println("Database Connectivity Failure! : "+e.getMessage());
 //            }
-//
-//        }
-//    }
+
+ //       }
+    }
 
 }

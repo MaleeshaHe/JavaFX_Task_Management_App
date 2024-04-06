@@ -1,5 +1,5 @@
 .menuItem:hover{
-    -fx-border-color: #5271FF;
+    -fx-border-color: #ED5B2D;
     -fx-border-width: 0px 0px 0px 4px;
     -fx-background-radius: 0 6 6 0;
     -fx-background-color: #dadada;
@@ -28,7 +28,7 @@
 }
 
 .addNoticeBtn{
-    -fx-background-color: #5271FF;
+    -fx-background-color: #ED5B2D;
     -fx-text-fill: #ffff;
 }
 

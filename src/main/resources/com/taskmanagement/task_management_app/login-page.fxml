@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="parent" prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@../../../style/light_mode.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tecmis.mis.LoginPageController">
+<BorderPane fx:id="parent" prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@../../../style/light_mode.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.taskmanagement.task_management_app.LoginPageController">
     <center>
         <Pane prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@../../../style/light_mode.css" BorderPane.alignment="CENTER">
             <children>
@@ -18,7 +18,7 @@
                     <children>
                         <ImageView fitHeight="297.0" fitWidth="312.0" layoutX="2.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../images/logo.png" />
+                                <Image url="@../../../images/appLogo.png" />
                             </image>
                         </ImageView>
                     </children></Pane>
@@ -27,7 +27,7 @@
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
-                <JFXButton buttonType="RAISED" defaultButton="true" layoutX="374.0" layoutY="292.0" onAction="#logInbtn" prefHeight="35.0" prefWidth="148.0" style="-fx-background-radius: 18;" styleClass="btn-success" stylesheets="@../../../style/light_mode.css" text="LOGIN">
+                <JFXButton buttonType="RAISED" defaultButton="true" focusTraversable="false" layoutX="374.0" layoutY="292.0" onAction="#logInbtn" prefHeight="35.0" prefWidth="148.0" style="-fx-background-radius: 18;" styleClass="btn-success" stylesheets="@../../../style/light_mode.css" text="LOGIN">
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font>
@@ -37,8 +37,8 @@
                         <Image url="@../../../images/close.png" />
                     </image>
                 </ImageView>
-                <JFXTextField fx:id="user_name" layoutX="328.0" layoutY="130.0" prefHeight="25.0" prefWidth="240.0" promptText="User name" />
-                <JFXPasswordField fx:id="passwordlog" layoutX="328.0" layoutY="188.0" prefHeight="25.0" prefWidth="240.0" promptText="Password" />
+                <JFXTextField fx:id="user_name" focusColor="#ed5b2d" layoutX="328.0" layoutY="130.0" prefHeight="25.0" prefWidth="240.0" promptText="User name" />
+                <JFXPasswordField fx:id="passwordlog" focusColor="#ed5b2d" layoutX="328.0" layoutY="188.0" prefHeight="25.0" prefWidth="240.0" promptText="Password" />
                 <Label fx:id="error" layoutX="354.0" layoutY="245.0" textAlignment="CENTER" textFill="#e70000">
                     <font>
                         <Font size="13.0" />
