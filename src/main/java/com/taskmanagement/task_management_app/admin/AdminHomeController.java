@@ -211,8 +211,8 @@ public class AdminHomeController implements Initializable {
         new FadeInDown(view).play();
     }
 
-    public void btnTimeTable(ActionEvent actionEvent) throws IOException {
-        AnchorPane view = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("timetable/timetable.fxml")));
+    public void btnAssign(ActionEvent actionEvent) throws IOException {
+        AnchorPane view = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("assign/assign.fxml")));
         borderpane.getChildren().removeAll();
         borderpane.setCenter(view);
         new FadeInDown(view).play();
