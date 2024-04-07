@@ -37,7 +37,7 @@
                         <Image url="@../../../images/close.png" />
                     </image>
                 </ImageView>
-                <JFXTextField fx:id="user_name" focusColor="#ed5b2d" layoutX="328.0" layoutY="130.0" prefHeight="25.0" prefWidth="240.0" promptText="User name" />
+                <JFXTextField fx:id="user_name" focusColor="#ed5b2d" layoutX="328.0" layoutY="130.0" prefHeight="25.0" prefWidth="240.0" promptText="Email" />
                 <JFXPasswordField fx:id="passwordlog" focusColor="#ed5b2d" layoutX="328.0" layoutY="188.0" prefHeight="25.0" prefWidth="240.0" promptText="Password" />
                 <Label fx:id="error" layoutX="354.0" layoutY="245.0" textAlignment="CENTER" textFill="#e70000">
                     <font>

@@ -3,6 +3,7 @@ package com.taskmanagement.task_management_app.admin;
 import animatefx.animation.*;
 import com.jfoenix.controls.JFXButton;
 import com.taskmanagement.task_management_app.UserSession;
+import com.taskmanagement.task_management_app.db_connect.DbConnect;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -102,38 +103,38 @@ public class AdminHomeController implements Initializable {
     }
     private void showData(){
         String usertg = UserSession.getUserTgNum();
-//        try {
-//            connection = DbConnect.getConnect();
-//            query = "SELECT * FROM user,department WHERE user.depId=department.depId AND tgnum='"+usertg+"'";
-//            preparedStatement = connection.prepareStatement(query);
-//            resultSet = preparedStatement.executeQuery();
-//
-//            while (resultSet.next()){
-//                tgnum.setText(": "+resultSet.getString("tgnum"));
-//                name.setText(": "+resultSet.getString("fname")+" "+resultSet.getString("lname"));
-//                email.setText(": "+resultSet.getString("email"));
-//                phonenum.setText(": "+resultSet.getString("phone_num"));
-//                dep.setText(": "+resultSet.getString("depName"));
-//                welcomeName.setText("Welcome "+resultSet.getString("fname"));
-//
-//
-//                InputStream is = resultSet.getBinaryStream("profile_pic");
-//                OutputStream os = new FileOutputStream(new File("photo.jpg"));
-//                byte[] content = new byte[1024];
-//                int size = 0;
-//                while ((size = is.read(content)) != -1){
-//                    os.write(content,0,size);
-//                }
-//                os.close();
-//                is.close();
-//
-//                pic.setFill(new ImagePattern(new Image("file:photo.jpg",0,0,true,true)));
-//
-//            }
-//
-//        }catch (Exception e){
-//            System.out.println(e);
-//        }
+        try {
+            connection = DbConnect.getConnect();
+            query = "SELECT * FROM public.users WHERE user_id='"+usertg+"'";
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                tgnum.setText(": "+resultSet.getString("user_id"));
+                name.setText(": "+resultSet.getString("fname")+" "+resultSet.getString("lname"));
+                email.setText(": "+resultSet.getString("email"));
+                phonenum.setText(": "+resultSet.getString("phone_num"));
+                dep.setText(": "+resultSet.getString("user_roll"));
+                welcomeName.setText("Welcome "+resultSet.getString("fname"));
+
+
+                InputStream is = resultSet.getBinaryStream("profile_pic");
+                OutputStream os = new FileOutputStream(new File("photo.jpg"));
+                byte[] content = new byte[1024];
+                int size = 0;
+                while ((size = is.read(content)) != -1){
+                    os.write(content,0,size);
+                }
+                os.close();
+                is.close();
+
+                pic.setFill(new ImagePattern(new Image("file:photo.jpg",0,0,true,true)));
+
+            }
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
 
     }
 
@@ -196,8 +197,8 @@ public class AdminHomeController implements Initializable {
         new FadeInDown(view).play();
     }
 
-    public void btnNotice(ActionEvent actionEvent) throws IOException {
-        AnchorPane view = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("notice/notice.fxml")));
+    public void btnProject(ActionEvent actionEvent) throws IOException {
+        AnchorPane view = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("project/project.fxml")));
         borderpane.getChildren().removeAll();
         borderpane.setCenter(view);
         new FadeInDown(view).play();
