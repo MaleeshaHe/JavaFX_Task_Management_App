@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="456.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.taskmanagement.task_management_app.admin.task.AddTaskControlloer">
+    <children>
+        <HBox alignment="CENTER" prefHeight="66.0" prefWidth="412.0">
+            <children>
+                <Label contentDisplay="CENTER" text="Create New Task" textAlignment="CENTER" textFill="#535353">
+                    <font>
+                        <Font name="System Bold" size="22.0" />
+                    </font>
+                </Label>
+            </children>
+            <VBox.margin>
+                <Insets bottom="15.0" />
+            </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="10.0" layoutY="76.0" prefHeight="41.0" prefWidth="412.0">
+            <children>
+                <Label prefHeight="26.0" prefWidth="120.0" text="Task Name" textFill="#595959">
+                    <font>
+                        <Font name="System Bold" size="17.0" />
+                    </font>
+                </Label>
+                <JFXTextField fx:id="txtName" focusColor="#5271ff" prefHeight="26.0" prefWidth="280.0" promptText="Name of the task">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </JFXTextField>
+            </children>
+            <VBox.margin>
+                <Insets bottom="15.0" />
+            </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="10.0" layoutY="118.0" prefHeight="41.0" prefWidth="412.0">
+            <children>
+                <Label prefHeight="26.0" prefWidth="120.0" text="Start Date" textFill="#595959">
+                    <font>
+                        <Font name="System Bold" size="17.0" />
+                    </font>
+                </Label>
+                <JFXTextField fx:id="txtSdate" focusColor="#5271ff" prefHeight="26.0" prefWidth="280.0" promptText="2024/01/02">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </JFXTextField>
+            </children>
+            <VBox.margin>
+                <Insets bottom="15.0" />
+            </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="10.0" layoutY="220.0" prefHeight="41.0" prefWidth="412.0">
+            <children>
+                <Label prefHeight="26.0" prefWidth="120.0" text="End Date" textFill="#595959">
+                    <font>
+                        <Font name="System Bold" size="17.0" />
+                    </font>
+                </Label>
+                <JFXTextField fx:id="txtEdate" focusColor="#5271ff" prefHeight="26.0" prefWidth="280.0" promptText="2024/11/22">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </JFXTextField>
+            </children>
+            <VBox.margin>
+                <Insets bottom="20.0" />
+            </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="10.0" layoutY="160.0" prefHeight="41.0" prefWidth="412.0">
+            <children>
+                <Label prefHeight="26.0" prefWidth="120.0" text="Project ID" textFill="#595959">
+                    <font>
+                        <Font name="System Bold" size="17.0" />
+                    </font>
+                </Label>
+                <JFXComboBox fx:id="comboUserType" focusColor="#5271ff" prefHeight="26.0" prefWidth="282.0" promptText="Selete the project">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </JFXComboBox>
+            </children>
+            <VBox.margin>
+                <Insets bottom="15.0" />
+            </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="10.0" layoutY="160.0" prefHeight="89.0" prefWidth="456.0">
+            <children>
+                <Label prefHeight="26.0" prefWidth="120.0" text="Description" textFill="#595959">
+                    <font>
+                        <Font name="System Bold" size="17.0" />
+                    </font>
+                </Label>
+                <JFXTextArea fx:id="txtDescription" focusColor="#5271ff" prefHeight="63.0" prefWidth="283.0" promptText="Description of the task">
+                    <HBox.margin>
+                        <Insets top="20.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </JFXTextArea>
+            </children>
+            <VBox.margin>
+                <Insets bottom="15.0" />
+            </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="10.0" layoutY="352.0" prefHeight="40.0" prefWidth="412.0">
+            <children>
+                <Label fx:id="error" textAlignment="CENTER" textFill="#e70000">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                </Label>
+            </children>
+            <VBox.margin>
+                <Insets bottom="15.0" />
+            </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="58.0" prefWidth="412.0">
+            <children>
+                <JFXButton fx:id="addBtn" alignment="CENTER" maxWidth="88.0" onAction="#addNotice" prefHeight="34.0" prefWidth="86.0" style="-fx-background-radius: 18;" styleClass="addNoticeBtn" stylesheets="@../../../../../style/style.css" text="Add" textAlignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </JFXButton>
+                <JFXButton fx:id="clearBtn" alignment="CENTER" layoutX="173.0" layoutY="43.0" maxWidth="88.0" onAction="#clearNotice" prefHeight="34.0" prefWidth="86.0" style="-fx-background-radius: 18;" styleClass="cancelNoticeBtn" stylesheets="@../../../../../style/style.css" text="Clear" textAlignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="10.0" />
+                    </HBox.margin>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </JFXButton>
+            </children>
+            <VBox.margin>
+                <Insets bottom="15.0" />
+            </VBox.margin>
+        </HBox>
+    </children>
+</VBox>

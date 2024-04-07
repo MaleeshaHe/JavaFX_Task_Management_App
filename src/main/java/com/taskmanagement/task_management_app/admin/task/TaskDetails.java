@@ -9,7 +9,9 @@ public class TaskDetails {
     private String progress;
     private int project_id;
 
-    public TaskDetails(int task_id, String task_name, String description, String start_date, String end_date, String progress, int project_id) {
+    private String project_name;
+
+    public TaskDetails(int task_id, String task_name, String description, String start_date, String end_date, String progress, int project_id, String project_name) {
         this.task_id = task_id;
         this.task_name = task_name;
         this.description = description;
@@ -17,6 +19,7 @@ public class TaskDetails {
         this.end_date = end_date;
         this.progress = progress;
         this.project_id = project_id;
+        this.project_name = project_name;
     }
 
     public int getTask_id() {
@@ -73,5 +76,13 @@ public class TaskDetails {
 
     public void setProject_id(int project_id) {
         this.project_id = project_id;
+    }
+
+    public String getProject_name() {
+        return project_name;
+    }
+
+    public void setProject_name(String project_name) {
+        this.project_name = project_name;
     }
 }

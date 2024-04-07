@@ -160,7 +160,7 @@ public class ProjectControlloer implements Initializable {
         try {
             projectList.clear();
 
-            query = "SELECT * FROM public.projects";
+            query = "SELECT * FROM public.projects, public.users WHERE public.projects.project_manager_id = public.users.user_id";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
@@ -170,7 +170,7 @@ public class ProjectControlloer implements Initializable {
                         resultSet.getInt("project_id"),
                         resultSet.getString("project_name"),
                         resultSet.getString("description"),
-                        resultSet.getString("project_manager_id"),
+                        resultSet.getString( "project_manager_id")+ " " + resultSet.getString("fname"),
                         resultSet.getString("start_date"),
                         resultSet.getString("end_date"),
                         resultSet.getString("progress")));

@@ -1,4 +1,4 @@
-package com.taskmanagement.task_management_app.admin.project;
+package com.taskmanagement.task_management_app.admin.task;
 
 import animatefx.animation.Shake;
 import com.jfoenix.controls.JFXButton;
@@ -32,9 +32,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-public class AddProjectControlloer implements Initializable {
-
+public class AddTaskControlloer implements Initializable {
     @FXML
     private JFXButton addBtn;
 
@@ -77,14 +75,14 @@ public class AddProjectControlloer implements Initializable {
     private void comboboxDataLoad(){
         try {
             connection = DbConnect.getConnect();
-            query = "SELECT * FROM public.users WHERE user_roll='Project Managers'";
+            query = "SELECT * FROM public.projects";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
             ObservableList data = FXCollections.observableArrayList();
 
             while (resultSet.next()){
-                data.add(new String(resultSet.getString("user_id") + " - " + resultSet.getString("fname")));
+                data.add(new String(resultSet.getString("project_id") + " - " + resultSet.getString("project_name")));
             }
             comboUserType.setItems(data);
         }catch (Exception e){
@@ -112,27 +110,27 @@ public class AddProjectControlloer implements Initializable {
                 String proDescription = txtDescription.getText();
                 String proSdate = txtSdate.getText();
                 String proEdate = txtEdate.getText();
-                String proUserType = comboUserType.getValue().substring(0, 6);
+                String proUserType = String.valueOf(comboUserType.getValue().charAt(0));;
 
                 connection = DbConnect.getConnect();
-                query = "INSERT INTO public.projects (project_name, description, start_date, end_date, progress, project_manager_id) VALUES (?, ?, ?, ?, ?, ?)";
+                query = "INSERT INTO public.tasks (task_name, description, start_date, end_date, progress, project_id) VALUES (?, ?, ?, ?, ?, ?)";
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1,proName);
                 preparedStatement.setString(2,proDescription);
                 preparedStatement.setString(3,proSdate);
                 preparedStatement.setString(4,proEdate);
                 preparedStatement.setString(5,"0");
-                preparedStatement.setString(6,proUserType);
+                preparedStatement.setInt(6, Integer.parseInt(proUserType));
                 preparedStatement.executeUpdate();
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("successfully created");
-                alert.setContentText("successfully created new Project");
+                alert.setContentText("successfully created new task");
                 Optional<ButtonType> result = alert.showAndWait();
 
                 if(result.get() == ButtonType.OK){
                     reset();
-                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("add-project.fxml")));
+                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("add-task.fxml")));
                     stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                     stage.setScene(scene);
                     stage.centerOnScreen();

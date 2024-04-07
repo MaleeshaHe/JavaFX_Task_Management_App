@@ -163,7 +163,7 @@ public class TaskControlloer implements Initializable  {
         try {
             taskList.clear();
 
-            query = "SELECT * FROM public.tasks";
+            query = "SELECT * FROM public.tasks, public.projects WHERE public.tasks.project_id = public.projects.project_id";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
@@ -176,7 +176,8 @@ public class TaskControlloer implements Initializable  {
                         resultSet.getString("start_date"),
                         resultSet.getString("end_date"),
                         resultSet.getString("progress"),
-                        resultSet.getInt("project_id")
+                        resultSet.getInt("project_id"),
+                        resultSet.getString("project_name")
                         ));
                 taskTable.setItems(taskList);
             }
@@ -193,10 +194,10 @@ public class TaskControlloer implements Initializable  {
 
         idcol.setCellValueFactory(new PropertyValueFactory<>("task_id"));
         namecol.setCellValueFactory(new PropertyValueFactory<>("task_name"));
-        promanagercol.setCellValueFactory(new PropertyValueFactory<>("start_date"));
-        sdatecol.setCellValueFactory(new PropertyValueFactory<>("end_date"));
-        edatecol.setCellValueFactory(new PropertyValueFactory<>("progress"));
-        progresscol.setCellValueFactory(new PropertyValueFactory<>("project_id"));
+        promanagercol.setCellValueFactory(new PropertyValueFactory<>("project_name"));
+        sdatecol.setCellValueFactory(new PropertyValueFactory<>("start_date"));
+        edatecol.setCellValueFactory(new PropertyValueFactory<>("end_date"));
+        progresscol.setCellValueFactory(new PropertyValueFactory<>("progress"));
         taskTable.setItems(taskList);
     }
 }
