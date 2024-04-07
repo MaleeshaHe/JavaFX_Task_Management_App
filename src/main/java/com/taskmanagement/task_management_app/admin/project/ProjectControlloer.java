@@ -74,7 +74,7 @@ public class ProjectControlloer implements Initializable {
     }
 
     @FXML
-    private void addNotice(){
+    private void addNew(){
         try {
             projectDetails = projectTable.getSelectionModel().getSelectedItem();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("add-project.fxml"));
@@ -93,39 +93,39 @@ public class ProjectControlloer implements Initializable {
     }
 
     @FXML
-    private void editNotice(){
-//        if(noticeTable.getSelectionModel().getSelectedItem() != null){
-//            try {
-//                projectDetails = noticeTable.getSelectionModel().getSelectedItem();
-//                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("edit-notice.fxml"));
-//                Parent root = (Parent) fxmlLoader.load();
-//
-//                EditNoticeControlloer senddata = fxmlLoader.getController();
-//                senddata.showInformation(noticeDetails.getNotice_id(),noticeDetails.getTitle(),noticeDetails.getDate(),noticeDetails.getTime(),noticeDetails.getContent());
-//
-//                Stage stage = new Stage();
-//                stage.setTitle("Edit Notice");
-//                javafx.scene.image.Image image = new Image("images/appIcon.png");
-//                stage.getIcons().add(image);
-//                stage.resizableProperty().setValue(false);
-//                stage.setScene(new Scene(root));
-//                stage.show();
-//
-//            } catch (IOException ex) {
-//                Logger.getLogger(NoticeController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-//        else {
-//            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            alert.setTitle("Warning");
-//            alert.setContentText("If you want to update any notice, First you select the row that you want to update");
-//            alert.showAndWait();
-//        }
+    private void editProject(){
+        if(projectTable.getSelectionModel().getSelectedItem() != null){
+            try {
+                projectDetails = projectTable.getSelectionModel().getSelectedItem();
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("edit-project.fxml"));
+                Parent root = (Parent) fxmlLoader.load();
+
+                EditProjectControlloer senddata = fxmlLoader.getController();
+                senddata.showInformation(projectDetails.getProject_id(),projectDetails.getProject_name(),projectDetails.getDescription(),projectDetails.getProject_manager_id(),projectDetails.getStart_date(),projectDetails.getEnd_date(),projectDetails.getProgress());
+
+                Stage stage = new Stage();
+                stage.setTitle("Edit Notice");
+                javafx.scene.image.Image image = new Image("images/appIcon.png");
+                stage.getIcons().add(image);
+                stage.resizableProperty().setValue(false);
+                stage.setScene(new Scene(root));
+                stage.show();
+
+            } catch (IOException ex) {
+  //              Logger.getLogger(NoticeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setContentText("If you want to update any notice, First you select the row that you want to update");
+            alert.showAndWait();
+        }
 
     }
 
     @FXML
-    private void deleteNotice(){
+    private void deleteProject(){
 
         if(projectTable.getSelectionModel().getSelectedItem() != null){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -167,7 +167,7 @@ public class ProjectControlloer implements Initializable {
 
             while (resultSet.next()){
                 projectList.add(new ProjectDetails(
-                        resultSet.getString("project_id"),
+                        resultSet.getInt("project_id"),
                         resultSet.getString("project_name"),
                         resultSet.getString("description"),
                         resultSet.getString("project_manager_id"),

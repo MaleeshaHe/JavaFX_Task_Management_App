@@ -1,7 +1,7 @@
 package com.taskmanagement.task_management_app.admin.project;
 
 public class ProjectDetails {
-    private String project_id;
+    private int project_id;
     private String project_name;
     private String description;
     private String start_date;
@@ -9,7 +9,7 @@ public class ProjectDetails {
     private String progress;
     private String project_manager_id;
 
-    public ProjectDetails(String project_id, String project_name, String description, String start_date, String end_date, String progress, String project_manager_id) {
+    public ProjectDetails(int project_id, String project_name, String description, String start_date, String end_date, String progress, String project_manager_id) {
         this.project_id = project_id;
         this.project_name = project_name;
         this.description = description;
@@ -19,11 +19,11 @@ public class ProjectDetails {
         this.project_manager_id = project_manager_id;
     }
 
-    public String getProject_id() {
+    public int getProject_id() {
         return project_id;
     }
 
-    public void setProject_id(String project_id) {
+    public void setProject_id(int project_id) {
         this.project_id = project_id;
     }
 

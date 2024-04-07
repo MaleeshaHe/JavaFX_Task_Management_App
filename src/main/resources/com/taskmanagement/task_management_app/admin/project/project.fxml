@@ -77,7 +77,7 @@
                                         <Font size="14.0" />
                                     </font>
                                 </JFXButton>
-                                <JFXButton fx:id="addNew" onAction="#addNotice" prefHeight="38.0" prefWidth="170.0" styleClass="menuItem" text="Add a New Projects">
+                                <JFXButton fx:id="addNew" onAction="#addNew" prefHeight="38.0" prefWidth="170.0" styleClass="menuItem" text="Add a New Projects">
                                     <graphic>
                                         <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -92,7 +92,7 @@
                                         <Font size="14.0" />
                                     </font>
                                 </JFXButton>
-                                <JFXButton fx:id="edit" layoutX="436.0" layoutY="30.0" onAction="#editNotice" prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Edit Projects">
+                                <JFXButton fx:id="edit" layoutX="436.0" layoutY="30.0" onAction="#editProject" prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Edit Projects">
                                     <graphic>
                                         <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -107,7 +107,7 @@
                                         <Font size="14.0" />
                                     </font>
                                 </JFXButton>
-                                <JFXButton fx:id="delete" layoutX="528.0" layoutY="30.0" onAction="#deleteNotice" prefHeight="32.0" prefWidth="147.0" styleClass="menuItem" text="Delete Projects">
+                                <JFXButton fx:id="delete" layoutX="528.0" layoutY="30.0" onAction="#deleteProject" prefHeight="32.0" prefWidth="147.0" styleClass="menuItem" text="Delete Projects">
                                     <graphic>
                                         <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                             <image>

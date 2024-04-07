@@ -207,6 +207,7 @@ public class EditUserControlloer implements Initializable {
             String stgnum = selectedUser.getUser_id();
 
 
+
             try {
                 connection = DbConnect.getConnect();
                 query = "UPDATE public.users SET user_id = ?, fname= ?, lname = ?, phone_num = ?, email = ?, password = ?, dob = ?, sex = ?, address = ?, user_roll = ?, profile_pic = ? WHERE user_id = ?";
