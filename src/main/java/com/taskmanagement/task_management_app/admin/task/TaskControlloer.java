@@ -1,7 +1,9 @@
-package com.taskmanagement.task_management_app.admin.project;
+package com.taskmanagement.task_management_app.admin.task;
 
 import com.jfoenix.controls.JFXButton;
 
+import com.taskmanagement.task_management_app.admin.project.EditProjectControlloer;
+import com.taskmanagement.task_management_app.admin.project.ProjectDetails;
 import com.taskmanagement.task_management_app.db_connect.DbConnect;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,7 +28,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-public class ProjectControlloer implements Initializable {
+
+public class TaskControlloer implements Initializable  {
     @FXML
     private JFXButton addNew;
 
@@ -34,39 +37,39 @@ public class ProjectControlloer implements Initializable {
     private JFXButton delete;
 
     @FXML
-    private TableColumn<ProjectDetails, String> edatecol;
+    private TableColumn<TaskDetails, String> edatecol;
 
     @FXML
     private JFXButton edit;
 
     @FXML
-    private TableColumn<ProjectDetails, String> idcol;
+    private TableColumn<TaskDetails, String> idcol;
 
     @FXML
-    private TableColumn<ProjectDetails, String> namecol;
+    private TableColumn<TaskDetails, String> namecol;
 
     @FXML
-    private TableColumn<ProjectDetails, String> progresscol;
+    private TableColumn<TaskDetails, String> progresscol;
 
     @FXML
-    private TableView<ProjectDetails> projectTable;
+    private TableView<TaskDetails> taskTable;
 
     @FXML
-    private TableColumn<ProjectDetails, String> promanagercol;
+    private TableColumn<TaskDetails, String> promanagercol;
 
     @FXML
     private JFXButton refreshBtn;
 
     @FXML
-    private TableColumn<ProjectDetails, String> sdatecol;
+    private TableColumn<TaskDetails, String> sdatecol;
 
     String query = null;
     Connection connection = null ;
     PreparedStatement preparedStatement = null ;
     ResultSet resultSet = null ;
-    ProjectDetails projectDetails = null ;
+    TaskDetails taskDetails = null ;
 
-    ObservableList<ProjectDetails> projectList = FXCollections.observableArrayList();
+    ObservableList<TaskDetails> taskList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -76,11 +79,11 @@ public class ProjectControlloer implements Initializable {
     @FXML
     private void addNew(){
         try {
-            projectDetails = projectTable.getSelectionModel().getSelectedItem();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("add-project.fxml"));
+            taskDetails = taskTable.getSelectionModel().getSelectedItem();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("add-task.fxml"));
             Parent root = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-            stage.setTitle("Create a new Project");
+            stage.setTitle("Create a new Task");
             javafx.scene.image.Image image = new Image("images/appIcon.png");
             stage.getIcons().add(image);
             stage.resizableProperty().setValue(false);
@@ -94,26 +97,26 @@ public class ProjectControlloer implements Initializable {
 
     @FXML
     private void editProject(){
-        if(projectTable.getSelectionModel().getSelectedItem() != null){
-            try {
-                projectDetails = projectTable.getSelectionModel().getSelectedItem();
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("edit-project.fxml"));
-                Parent root = (Parent) fxmlLoader.load();
-
-                EditProjectControlloer senddata = fxmlLoader.getController();
-                senddata.showInformation(projectDetails.getProject_id(),projectDetails.getProject_name(),projectDetails.getDescription(),projectDetails.getStart_date(),projectDetails.getEnd_date(),projectDetails.getProject_manager_id(),projectDetails.getProgress());
-
-                Stage stage = new Stage();
-                stage.setTitle("Edit Notice");
-                javafx.scene.image.Image image = new Image("images/appIcon.png");
-                stage.getIcons().add(image);
-                stage.resizableProperty().setValue(false);
-                stage.setScene(new Scene(root));
-                stage.show();
-
-            } catch (IOException ex) {
-  //              Logger.getLogger(NoticeController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        if(taskTable.getSelectionModel().getSelectedItem() != null){
+//            try {
+//                taskDetails = taskTable.getSelectionModel().getSelectedItem();
+//                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("edit-task.fxml"));
+//                Parent root = (Parent) fxmlLoader.load();
+//
+//                EditProjectControlloer senddata = fxmlLoader.getController();
+//                senddata.showInformation(projectDetails.getProject_id(),projectDetails.getProject_name(),projectDetails.getDescription(),projectDetails.getStart_date(),projectDetails.getEnd_date(),projectDetails.getProject_manager_id(),projectDetails.getProgress());
+//
+//                Stage stage = new Stage();
+//                stage.setTitle("Edit Notice");
+//                javafx.scene.image.Image image = new Image("images/appIcon.png");
+//                stage.getIcons().add(image);
+//                stage.resizableProperty().setValue(false);
+//                stage.setScene(new Scene(root));
+//                stage.show();
+//
+//            } catch (IOException ex) {
+//                //              Logger.getLogger(NoticeController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
         }
         else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -127,16 +130,16 @@ public class ProjectControlloer implements Initializable {
     @FXML
     private void deleteProject(){
 
-        if(projectTable.getSelectionModel().getSelectedItem() != null){
+        if(taskTable.getSelectionModel().getSelectedItem() != null){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Delete Project");
-            alert.setContentText("Are you sure delete this Project?");
+            alert.setTitle("Delete Task");
+            alert.setContentText("Are you sure delete this Task?");
             Optional<ButtonType> result = alert.showAndWait();
 
             if(result.get() == ButtonType.OK){
                 try {
-                    projectDetails = projectTable.getSelectionModel().getSelectedItem();
-                    query = "DELETE FROM public.projects WHERE project_id='"+projectDetails.getProject_id()+"'";
+                    taskDetails = taskTable.getSelectionModel().getSelectedItem();
+                    query = "DELETE FROM public.tasks WHERE task_id='"+taskDetails.getTask_id()+"'";
                     connection = DbConnect.getConnect();
                     preparedStatement = connection.prepareStatement(query);
                     preparedStatement.execute();
@@ -150,7 +153,7 @@ public class ProjectControlloer implements Initializable {
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
-            alert.setContentText("If you want to delete any project, First you select the row that you want to delete");
+            alert.setContentText("If you want to delete any task, First you select the row that you want to delete");
             alert.showAndWait();
         }
     }
@@ -158,23 +161,24 @@ public class ProjectControlloer implements Initializable {
     @FXML
     private void refreshTable() {
         try {
-            projectList.clear();
+            taskList.clear();
 
-            query = "SELECT * FROM public.projects";
+            query = "SELECT * FROM public.tasks";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
 
             while (resultSet.next()){
-                projectList.add(new ProjectDetails(
-                        resultSet.getInt("project_id"),
-                        resultSet.getString("project_name"),
+                taskList.add(new TaskDetails(
+                        resultSet.getInt("task_id"),
+                        resultSet.getString("task_name"),
                         resultSet.getString("description"),
-                        resultSet.getString("project_manager_id"),
                         resultSet.getString("start_date"),
                         resultSet.getString("end_date"),
-                        resultSet.getString("progress")));
-                projectTable.setItems(projectList);
+                        resultSet.getString("progress"),
+                        resultSet.getInt("project_id")
+                        ));
+                taskTable.setItems(taskList);
             }
 
         } catch (SQLException ex) {
@@ -187,12 +191,12 @@ public class ProjectControlloer implements Initializable {
         connection = DbConnect.getConnect();
         refreshTable();
 
-        idcol.setCellValueFactory(new PropertyValueFactory<>("project_id"));
-        namecol.setCellValueFactory(new PropertyValueFactory<>("project_name"));
+        idcol.setCellValueFactory(new PropertyValueFactory<>("task_id"));
+        namecol.setCellValueFactory(new PropertyValueFactory<>("task_name"));
         promanagercol.setCellValueFactory(new PropertyValueFactory<>("start_date"));
         sdatecol.setCellValueFactory(new PropertyValueFactory<>("end_date"));
         edatecol.setCellValueFactory(new PropertyValueFactory<>("progress"));
-        progresscol.setCellValueFactory(new PropertyValueFactory<>("project_manager_id"));
-        projectTable.setItems(projectList);
+        progresscol.setCellValueFactory(new PropertyValueFactory<>("project_id"));
+        taskTable.setItems(taskList);
     }
 }

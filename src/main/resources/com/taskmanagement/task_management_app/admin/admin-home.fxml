@@ -87,7 +87,7 @@
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="10.0" />
                                     </padding>
                                 </JFXButton>
-                                <JFXButton fx:id="course_btn" alignment="BASELINE_LEFT" onAction="#btnCourse" prefHeight="50.0" prefWidth="176.0" styleClass="sidebarItem" text="  Tasks" textFill="WHITE">
+                                <JFXButton alignment="BASELINE_LEFT" onAction="#btnTask" prefHeight="50.0" prefWidth="176.0" styleClass="sidebarItem" text="  Tasks" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="16.0" />
                                     </font>
@@ -251,7 +251,7 @@
                                                         </HBox>
                                                         <HBox alignment="CENTER" layoutX="10.0" layoutY="252.0" prefHeight="105.0" prefWidth="310.0">
                                                             <children>
-                                                                <JFXButton contentDisplay="TOP" onAction="#btnCourse" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #ffff; -fx-border-radius: 20; -fx-background-radius: 20; -fx-border-color: #565656;" text="Tasks" textFill="#565656">
+                                                                <JFXButton contentDisplay="TOP"  prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #ffff; -fx-border-radius: 20; -fx-background-radius: 20; -fx-border-color: #565656;" text="Tasks" textFill="#565656">
                                                                     <graphic>
                                                                         <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                                                                             <image>

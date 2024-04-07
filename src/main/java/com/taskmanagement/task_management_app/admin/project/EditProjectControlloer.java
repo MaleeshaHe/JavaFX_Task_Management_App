@@ -156,7 +156,7 @@ public class EditProjectControlloer implements Initializable{
         txtEdate.setText("");
         comboUserType.setValue("");
     }
-    public void showInformation(int project_id, String project_name, String description, String project_manager_id, String start_date, String end_date, String progress){
+    public void showInformation(int project_id, String project_name, String description, String start_date, String end_date,  String project_manager_id,String progress){
         this.project_id = project_id;
         txtName.setText(project_name);
         txtDescription.setText(description);
