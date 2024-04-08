@@ -98,7 +98,7 @@ public class AddUserControlloer implements Initializable {
 
     @FXML
     void backBtn(ActionEvent event) throws Exception{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../admin-home.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../team-members-home.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root, 1080,610);
         stage.setScene(scene);
@@ -187,7 +187,7 @@ public class AddUserControlloer implements Initializable {
                 Optional<ButtonType> result = alert.showAndWait();
 
                 if(result.get() == ButtonType.OK){
-                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../admin-home.fxml")));
+                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../team-members-home.fxml")));
                     stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                     scene = new Scene(root, 1080,610);
                     stage.setScene(scene);

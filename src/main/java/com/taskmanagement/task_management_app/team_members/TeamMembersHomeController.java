@@ -1,6 +1,7 @@
-package com.taskmanagement.task_management_app.admin;
+package com.taskmanagement.task_management_app.team_members;
 
-import animatefx.animation.*;
+import animatefx.animation.FadeIn;
+import animatefx.animation.FadeInDown;
 import com.jfoenix.controls.JFXButton;
 import com.taskmanagement.task_management_app.UserSession;
 import com.taskmanagement.task_management_app.db_connect.DbConnect;
@@ -30,10 +31,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class AdminHomeController implements Initializable {
+public class TeamMembersHomeController implements Initializable {
 
     @FXML
     private Label time;
@@ -167,7 +166,7 @@ public class AdminHomeController implements Initializable {
             Parent root = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("Update Admin Details");
-            javafx.scene.image.Image image = new Image("images/appIcon.png");
+            Image image = new Image("images/appIcon.png");
             stage.getIcons().add(image);
             stage.resizableProperty().setValue(false);
             stage.setScene(new Scene(root));

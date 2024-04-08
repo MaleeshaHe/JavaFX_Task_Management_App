@@ -98,7 +98,7 @@ public class LoginPageController implements Initializable {
 
                             UserSession.getInstance(userTg, privileges,String.valueOf(depId));
 
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("admin/admin-home.fxml"));
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("admin/team-members-home.fxml"));
                             root = loader.load();
                             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                             scene = new Scene(root, 1080,610);
@@ -108,17 +108,17 @@ public class LoginPageController implements Initializable {
                             stage.resizableProperty().setValue(false);
                             new FadeIn(root).play();
 
-                        } else if(rs.getString("user_roll").equals("Student")) {
+                        } else if(rs.getString("user_roll").equals("Team Members")) {
 
                             userTg = rs.getString("tgnum");
                             depId = 1;
 
                             Set<String> privileges = new HashSet<>();
-                            privileges.add("studentPrivilege");
+                            privileges.add("teamMembersPrivilege");
 
                             UserSession.getInstance(userTg, privileges,String.valueOf(depId));
 
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("student/student-home.fxml"));
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("team-members-home.fxml"));
                             root = loader.load();
                             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                             scene = new Scene(root, 1080,610);

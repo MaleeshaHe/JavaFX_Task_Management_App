@@ -111,7 +111,7 @@ public class ViewUserController implements Initializable {
 
     @FXML
     void backBtn(ActionEvent event) throws Exception{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../admin-home.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../team-members-home.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root, 1050,600);
         stage.setScene(scene);
