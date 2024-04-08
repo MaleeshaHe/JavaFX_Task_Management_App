@@ -163,7 +163,7 @@ public class AdminHomeController implements Initializable {
 
     public void btnEditUser(ActionEvent actionEvent) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("team-members-update.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("admin-update.fxml"));
             Parent root = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("Update Admin Details");
@@ -179,7 +179,7 @@ public class AdminHomeController implements Initializable {
     }
 
     public void btnHome(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("team-members-home.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("admin-home.fxml"));
         root = loader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root, 1080,610);

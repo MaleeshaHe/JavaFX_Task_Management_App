@@ -1,7 +1,7 @@
-package com.taskmanagement.task_management_app.team_members;
+package com.taskmanagement.task_management_app.team_member;
 
-import animatefx.animation.FadeIn;
-import animatefx.animation.FadeInDown;
+
+import animatefx.animation.*;
 import com.jfoenix.controls.JFXButton;
 import com.taskmanagement.task_management_app.UserSession;
 import com.taskmanagement.task_management_app.db_connect.DbConnect;
@@ -31,8 +31,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class TeamMembersHomeController implements Initializable {
+public class TeamMemberHomeController implements Initializable {
 
     @FXML
     private Label time;
@@ -162,23 +164,22 @@ public class TeamMembersHomeController implements Initializable {
 
     public void btnEditUser(ActionEvent actionEvent) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("team-members-update.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("team-member-update.fxml"));
             Parent root = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("Update Admin Details");
-            Image image = new Image("images/appIcon.png");
+            javafx.scene.image.Image image = new Image("images/appIcon.png");
             stage.getIcons().add(image);
             stage.resizableProperty().setValue(false);
             stage.setScene(new Scene(root));
             stage.show();
 
         } catch (IOException ex) {
-            //Logger.getLogger(NoticeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            Logger.getLogger(TeamMemberHomeController.class.getName()).log(Level.SEVERE, null, ex);}
     }
 
     public void btnHome(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("team-members-home.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("team-member-home.fxml"));
         root = loader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root, 1080,610);

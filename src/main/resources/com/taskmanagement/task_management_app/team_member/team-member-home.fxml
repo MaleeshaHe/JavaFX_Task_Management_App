@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1050.0" stylesheets="@../../../../style/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.taskmanagement.task_management_app.team_members.TeamMembersHomeController">
+<AnchorPane prefHeight="600.0" prefWidth="1050.0" stylesheets="@../../../../style/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.taskmanagement.task_management_app.team_member.TeamMemberHomeController">
     <children>
         <BorderPane fx:id="borderpane" layoutX="114.0" layoutY="54.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
@@ -108,7 +108,7 @@
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="10.0" />
                                     </padding>
                                 </JFXButton>
-                                <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                <HBox alignment="BOTTOM_RIGHT" prefHeight="138.0" prefWidth="162.0">
                                     <children>
                                         <JFXButton alignment="CENTER" graphicTextGap="10.0" onAction="#btnLogOut" prefHeight="38.0" prefWidth="142.0" style="-fx-border-color: #fff; -fx-border-radius: 18; -fx-background-radius: 18;" text="Log Out" textFill="WHITE">
                                             <font>
@@ -187,7 +187,7 @@
                                                     <children>
                                                         <HBox alignment="CENTER" prefHeight="61.0" prefWidth="310.0">
                                                             <children>
-                                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="309.0" text="Team Member Dashboard" textAlignment="CENTER" textFill="#797979">
+                                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="299.0" text="Team Member Dashboard" textAlignment="CENTER" textFill="#797979">
                                                                     <font>
                                                                         <Font name="System Bold" size="24.0" />
                                                                     </font>

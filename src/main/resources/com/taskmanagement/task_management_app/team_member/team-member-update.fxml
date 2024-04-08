@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="368.0" prefWidth="666.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.taskmanagement.task_management_app.team_members.UpdateTeamMembersControlloer">
+<AnchorPane prefHeight="368.0" prefWidth="666.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.taskmanagement.task_management_app.team_member.UpdateTeamMemberControlloer">
     <children>
         <BorderPane fx:id="borderpane" layoutX="10.0" layoutY="10.0" prefHeight="470.0" prefWidth="776.0">
             <center>

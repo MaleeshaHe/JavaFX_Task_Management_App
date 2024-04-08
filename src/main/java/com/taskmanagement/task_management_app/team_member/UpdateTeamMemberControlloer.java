@@ -1,4 +1,6 @@
-package com.taskmanagement.task_management_app.team_members;
+package com.taskmanagement.task_management_app.team_member;
+
+import animatefx.animation.FadeIn;
 import animatefx.animation.Shake;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
@@ -7,7 +9,9 @@ import com.taskmanagement.task_management_app.UserSession;
 import com.taskmanagement.task_management_app.db_connect.DbConnect;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -28,10 +32,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-public class UpdateTeamMembersControlloer implements Initializable {
+public class UpdateTeamMemberControlloer implements Initializable {
     @FXML
     private JFXComboBox<String> comboDepartment;
 
