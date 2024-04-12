@@ -128,9 +128,9 @@ public class LoginPageController implements Initializable {
                             stage.resizableProperty().setValue(false);
                             new FadeIn(root).play();
 
-                        } else if(rs.getString("user_roll").equals("Technical Officer")) {
+                        } else if(rs.getString("user_roll").equals("Project Managers")) {
 
-                            userTg = rs.getString("tgnum");
+                            userTg = rs.getString("user_id");
                             depId = 1;
 
                             Set<String> privileges = new HashSet<>();
@@ -138,27 +138,7 @@ public class LoginPageController implements Initializable {
 
                             UserSession.getInstance(userTg, privileges,String.valueOf(depId));
 
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("technical_officer/technical-officer-home.fxml"));
-                            root = loader.load();
-                            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                            scene = new Scene(root, 1080,610);
-                            stage.setScene(scene);
-                            stage.centerOnScreen();
-                            stage.show();
-                            stage.resizableProperty().setValue(false);
-                            new FadeIn(root).play();
-
-                        }else if(rs.getString("user_roll").equals("Lecturer")) {
-
-                            userTg = rs.getString("tgnum");
-                            depId = 1;
-
-                            Set<String> privileges = new HashSet<>();
-                            privileges.add("lecturerPrivilege");
-
-                            UserSession.getInstance(userTg, privileges,String.valueOf(depId));
-
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("lecturer/lecturer-home.fxml"));
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("project_manager/project-manager-home.fxml"));
                             root = loader.load();
                             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                             scene = new Scene(root, 1080,610);

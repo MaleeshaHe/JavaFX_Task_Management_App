@@ -1,11 +1,10 @@
-package com.taskmanagement.task_management_app.admin.project;
+package com.taskmanagement.task_management_app.project_manager.project;
 
 import animatefx.animation.Shake;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-
 import com.taskmanagement.task_management_app.db_connect.DbConnect;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -69,8 +68,6 @@ public class EditProjectControlloer implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         comboboxDataLoad();
     }
-
-
 
     private void comboboxDataLoad(){
         try {
